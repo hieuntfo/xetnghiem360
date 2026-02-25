@@ -4,13 +4,13 @@ import MediaPlaceholder from './components/MediaPlaceholder';
 import HealthChart from './components/HealthChart';
 import DecisionTool from './components/DecisionTool';
 import EducationalHub from './components/EducationalHub';
-import ServiceConnection from './components/ServiceConnection';
+import O2OConnection from './components/O2OConnection';
 import IndexDecoder from './components/IndexDecoder';
 import ResultLookup from './components/ResultLookup';
 import Dashboard from './components/Dashboard';
 import BookingModal from './components/BookingModal';
 import PriceListModal from './components/PriceListModal';
-import LocationWidget from './components/LocationWidget';
+
 
 type ViewState = 'home' | 'lookup' | 'decoder' | 'dashboard';
 
@@ -396,8 +396,8 @@ const App: React.FC = () => {
       {/* --- EDUCATIONAL HUB SECTION --- */}
       <EducationalHub />
       
-      {/* --- SERVICE CONNECTION (O2O) --- */}
-      <ServiceConnection onBook={openBooking} onViewPrices={openPriceList} />
+      {/* --- O2O CONNECTION & EVENTS --- */}
+      <O2OConnection onBook={openBooking} onViewPrices={openPriceList} />
 
       {/* --- THE DATA LOCKER (Hồ sơ sức khỏe số) --- */}
       <section className="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
@@ -471,8 +471,7 @@ const App: React.FC = () => {
         </div>
       </section>
 
-      {/* --- LOCATION WIDGET --- */}
-      <LocationWidget />
+
 
       {/* --- FOOTER --- */}
       <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-800">
