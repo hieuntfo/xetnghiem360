@@ -1,15 +1,16 @@
 import React from 'react';
-import { ArrowRight, Video, Zap } from 'lucide-react';
+import { ArrowRight, Video, Zap, Footprints } from 'lucide-react';
 
-const O2OCard = ({ visual, title, description, buttonText, onClick, primary }) => (
-    <div className={`rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col ${primary ? 'bg-gray-900 text-white' : 'bg-white'}`}>
+const O2OCard = ({ visual, title, metadata, description, buttonText, onClick, primary }) => (
+    <div className={`rounded-2xl shadow-xl border border-gray-100 overflow-hidden flex flex-col ${primary ? 'bg-brand-600 text-white' : 'bg-white'}`}>
         <div className="min-h-[300px] flex items-center justify-center relative overflow-hidden p-8 bg-gray-50">
             {visual}
         </div>
         <div className="p-8 flex flex-col flex-grow">
             <h3 className={`text-2xl font-bold mb-3 ${primary ? 'text-white' : 'text-gray-900'}`}>{title}</h3>
-            <p className={`mb-8 flex-grow ${primary ? 'text-gray-300' : 'text-gray-500'}`}>{description}</p>
-            <button onClick={onClick} className={`self-start flex items-center gap-2 font-semibold py-3 px-6 rounded-lg transition-colors ${primary ? 'bg-brand-500 hover:bg-brand-600 text-white' : 'bg-brand-600 hover:bg-brand-700 text-white'}`}>
+            {metadata && <div className={`text-sm mb-4 ${primary ? 'text-brand-200' : 'text-gray-500'}`}>{metadata}</div>}
+            <p className={`mb-8 flex-grow ${primary ? 'text-brand-100' : 'text-gray-500'}`}>{description}</p>
+            <button onClick={onClick} className={`self-start flex items-center gap-2 font-semibold py-3 px-6 rounded-lg transition-colors ${primary ? 'bg-white hover:bg-brand-50 text-brand-600' : 'bg-brand-600 hover:bg-brand-700 text-white'}`}>
                 <span>{buttonText}</span>
                 <ArrowRight size={16} />
             </button>
@@ -36,23 +37,27 @@ const O2OExplanation: React.FC<{ onOpenEvents: () => void; onOpenMarathon: () =>
                         </div>
                     </div>
                 }
-                title="Xem Talkshow, Hiểu Sức Khỏe"
-                description="Theo dõi các buổi tư vấn độc quyền với chuyên gia y tế hàng đầu để hiểu rõ các chỉ số sức khỏe và nhận mã ưu đãi."
+                title="Talkshow #3: Giải mã chỉ số Mỡ máu"
+                metadata="Phát sóng lúc 20:00, 28/02/2026"
+                description="Cùng BS.CKII Nguyễn Thị Thu Hằng, Trưởng khoa Khám bệnh, Bệnh viện Đa khoa Tâm Anh, tìm hiểu về Cholesterol và Triglyceride."
                 buttonText="Xem tất cả sự kiện"
                 onClick={onOpenEvents}
                 primary={false}
             />
             <O2OCard 
                  visual={
-                    <div className="relative w-48 h-48 bg-brand-500 rounded-full flex items-center justify-center text-white shadow-2xl">
-                        <Zap size={80} strokeWidth={1.5} />
+                    <div className="relative w-48 h-80 bg-gray-100 rounded-2xl shadow-inner flex items-center justify-center">
+                         <div className="w-20 h-20 bg-brand-600 rounded-full flex items-center justify-center text-white">
+                            <Footprints size={40} />
+                        </div>
                     </div>
                 }
-                title="Giải chạy Long Châu Vì Sức Khỏe"
-                description="Quét mã QR tại các giải chạy VnExpress Marathon, kết quả xét nghiệm sẽ được đẩy thẳng về tài khoản sức khỏe số của bạn."
+                title="VnExpress Marathon Imperial Huế 2026"
+                metadata="Sự kiện đã diễn ra: 21/02/2026"
+                description="Đã tham gia giải chạy? Quét mã QR tại booth Long Châu để đối chiếu chỉ số phục hồi và nhận kết quả về tài khoản sức khỏe số."
                 buttonText="Dành cho Runners"
                 onClick={onOpenMarathon}
-                primary={true}
+                primary={false}
             />
         </div>
       </div>
