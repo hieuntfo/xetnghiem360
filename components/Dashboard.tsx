@@ -52,6 +52,19 @@ const Dashboard: React.FC<DashboardProps> = ({ onBack, onLogout, onBook }) => {
             <p className="text-gray-500">Dữ liệu được cập nhật lần cuối vào ngày 24/05/2024</p>
         </div>
 
+        {/* Personalized Care Section */}
+          <div className="lg:col-span-3 bg-gradient-to-r from-brand-600 to-brand-500 text-white p-8 rounded-2xl shadow-lg flex flex-col md:flex-row items-center gap-8 mb-8">
+            <img src="https://picsum.photos/seed/avatar1/120/120" alt="User Avatar" className="w-32 h-32 rounded-full border-4 border-white/50 object-cover flex-shrink-0" referrerPolicy='no-referrer' />
+            <div>
+                <p className="font-semibold text-brand-100">Chăm sóc Cá nhân hóa sau sự kiện</p>
+                <h3 className="text-3xl font-bold mt-1 mb-3">Chào anh An, mừng anh đã hoàn thành giải chạy!</h3>
+                <p className="text-brand-50 leading-relaxed">
+                    Hệ thống ghi nhận anh vừa tham gia <strong className='font-bold'>VnExpress Marathon</strong>. Để phục hồi tốt nhất, chúng tôi khuyến nghị anh nên chú trọng vào các chỉ số <strong className='font-bold'>Điện giải (Ion đồ)</strong> và <strong className='font-bold'>Men cơ (CK)</strong> trong lần xét nghiệm tới.
+                </p>
+                <button className="mt-4 bg-white text-brand-600 font-bold py-2 px-5 rounded-full hover:bg-brand-50 transition-colors">Đặt lịch xét nghiệm phục hồi</button>
+            </div>
+          </div>
+
         {/* VITALS CARDS */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
             <div className="bg-white p-4 rounded-2xl border border-gray-100 shadow-sm flex flex-col items-center justify-center text-center hover:border-brand-200 transition-colors">

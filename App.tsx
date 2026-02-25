@@ -10,6 +10,7 @@ import ResultLookup from './components/ResultLookup';
 import Dashboard from './components/Dashboard';
 import BookingModal from './components/BookingModal';
 import PriceListModal from './components/PriceListModal';
+import LocationWidget from './components/LocationWidget';
 
 type ViewState = 'home' | 'lookup' | 'decoder' | 'dashboard';
 
@@ -469,6 +470,9 @@ const App: React.FC = () => {
           </div>
         </div>
       </section>
+
+      {/* --- LOCATION WIDGET --- */}
+      <LocationWidget />
 
       {/* --- FOOTER --- */}
       <footer className="bg-gray-900 text-gray-300 py-16 border-t border-gray-800">
