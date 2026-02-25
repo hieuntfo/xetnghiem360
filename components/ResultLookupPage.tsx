@@ -95,7 +95,7 @@ const MOCK_PATIENT_RESULT = {
   ]
 };
 
-const ResultLookup: React.FC<ResultLookupProps> = ({ onBack }) => {
+const ResultLookupPage: React.FC<ResultLookupProps> = ({ onBack }) => {
   const [step, setStep] = useState<'input' | 'loading' | 'result'>('input');
   const [code, setCode] = useState('');
   const [expandedItems, setExpandedItems] = useState<string[]>([]);
@@ -366,4 +366,4 @@ const ResultLookup: React.FC<ResultLookupProps> = ({ onBack }) => {
   );
 };
 
-export default ResultLookup;
+export default ResultLookupPage;

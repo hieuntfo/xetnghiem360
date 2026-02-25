@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Menu, Search, Phone, ArrowRight, ShieldCheck, Clock, FileText, Sparkles, ScanLine, Microscope, Activity, X, Loader2, Home, Lock, Share2, Download, FileCode, User } from 'lucide-react';
-import MediaPlaceholder from './components/MediaPlaceholder';
+import HeroBentoGrid from './components/HeroBentoGrid';
 import HealthChart from './components/HealthChart';
 import DecisionTool from './components/DecisionTool';
 import EducationalHub from './components/EducationalHub';
-import O2OConnection from './components/O2OConnection';
+import O2OExplanation from './components/O2OExplanation';
+import MapCTA from './components/MapCTA';
 import IndexDecoder from './components/IndexDecoder';
-import ResultLookup from './components/ResultLookup';
+import ResultLookupPage from './components/ResultLookupPage';
 import Dashboard from './components/Dashboard';
 import BookingModal from './components/BookingModal';
 import PriceListModal from './components/PriceListModal';
@@ -73,7 +74,7 @@ const App: React.FC = () => {
 
   // --- VIEW ROUTING ---
   if (currentView === 'lookup') {
-    return <ResultLookup onBack={() => setCurrentView('home')} />;
+    return <ResultLookupPage onBack={() => setCurrentView('home')} />;
   }
 
   if (currentView === 'decoder') {
@@ -343,53 +344,8 @@ const App: React.FC = () => {
               </div>
             </div>
             
-            {/* Right Column: Editorial/Lifestyle Imagery */}
-            <div className="lg:w-1/2 w-full relative pl-0 lg:pl-10">
-              <div className="grid grid-cols-12 gap-4">
-                {/* Main Lifestyle Image - Runner */}
-                <div className="col-span-7 space-y-4 pt-12">
-                   <MediaPlaceholder 
-                    type="image" 
-                    height="h-64" 
-                    bgColor="bg-orange-100" 
-                    label="Runner / Vận động" 
-                    className="rounded-2xl shadow-lg" 
-                  />
-                  
-                  {/* HERO WIDGET (UPDATED) */}
-                  <div className="bg-white p-4 rounded-2xl shadow-lg border border-gray-100 flex items-center gap-3">
-                    <div className="bg-blue-100 p-2 rounded-full text-blue-600">
-                      <Home size={20} />
-                    </div>
-                    <div>
-                      <div className="text-xs text-gray-500">Dịch vụ tại nhà</div>
-                      <div className="text-sm font-bold text-gray-900">Lấy mẫu trong 30p</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Secondary Column */}
-                <div className="col-span-5 space-y-4">
-                  <MediaPlaceholder 
-                    type="video" 
-                    height="h-48" 
-                    bgColor="bg-blue-100" 
-                    label="Gia đình" 
-                    className="rounded-2xl shadow-lg" 
-                  />
-                  <MediaPlaceholder 
-                    type="image" 
-                    height="h-56" 
-                    bgColor="bg-gray-200" 
-                    label="Chuyên gia tư vấn" 
-                    className="rounded-2xl shadow-lg" 
-                  />
-                </div>
-              </div>
-
-              {/* Decorative elements */}
-              <div className="absolute top-1/2 left-0 -z-10 w-[120%] h-[120%] bg-gradient-to-tr from-brand-100/40 to-transparent blur-3xl rounded-full"></div>
-            </div>
+            {/* Right Column: Bento Grid Imagery */}
+            <HeroBentoGrid />
           </div>
         </div>
       </section>
@@ -411,8 +367,11 @@ const App: React.FC = () => {
       {/* --- EDUCATIONAL HUB SECTION --- */}
       <EducationalHub />
       
-      {/* --- O2O CONNECTION & EVENTS --- */}
-      <O2OConnection onBook={openBooking} onViewPrices={openPriceList} onOpenMap={() => setCurrentView('map')} onOpenMarathon={() => setCurrentView('marathon')} onOpenEvents={() => setCurrentView('events')} />
+      {/* --- O2O EXPLANATION --- */}
+      <O2OExplanation onOpenEvents={() => setCurrentView('events')} onOpenMarathon={() => setCurrentView('marathon')} />
+
+      {/* --- MAP CTA --- */}
+      <MapCTA onOpenMap={() => setCurrentView('map')} />
 
       {/* --- THE DATA LOCKER (Hồ sơ sức khỏe số) --- */}
       <section className="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
