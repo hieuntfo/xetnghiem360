@@ -5,19 +5,16 @@ import HealthChart from './components/HealthChart';
 import DecisionTool from './components/DecisionTool';
 import EducationalHub from './components/EducationalHub';
 import ServiceConnection from './components/ServiceConnection';
-import { medicalIndices } from './data/medicalIndices';
-import IndexBrowser from './components/IndexBrowser';
-import IndexDetailPage from './components/IndexDetailPage';
+import IndexDecoder from './components/IndexDecoder';
 import ResultLookup from './components/ResultLookup';
 import Dashboard from './components/Dashboard';
 import BookingModal from './components/BookingModal';
 import PriceListModal from './components/PriceListModal';
 
-type ViewState = 'home' | 'lookup' | 'indexBrowser' | 'indexDetail' | 'dashboard';
+type ViewState = 'home' | 'lookup' | 'decoder' | 'dashboard';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
-  const [selectedIndexId, setSelectedIndexId] = useState<string | null>(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   
   // Modal States
@@ -70,29 +67,18 @@ const App: React.FC = () => {
   const closePriceList = () => setIsPriceListOpen(false);
 
 
-  const selectedIndex = selectedIndexId ? medicalIndices.find(i => i.id === selectedIndexId) : null;
-
-
   // --- VIEW ROUTING ---
   if (currentView === 'lookup') {
     return <ResultLookup onBack={() => setCurrentView('home')} />;
   }
 
-  if (currentView === 'indexBrowser') {
-    return <IndexBrowser 
-      onBack={() => setCurrentView('home')} 
-      onSelectIndex={(id) => {
-        setSelectedIndexId(id);
-        setCurrentView('indexDetail');
-      }} 
-    />;
-  }
-
-  if (currentView === 'indexDetail' && selectedIndex) {
-    return <IndexDetailPage 
-      index={selectedIndex}
-      onBack={() => setCurrentView('indexBrowser')}
-    />
+  if (currentView === 'decoder') {
+    return (
+      <>
+        <IndexDecoder onBack={() => setCurrentView('home')} onBook={openBooking} />
+        <BookingModal isOpen={isBookingOpen} onClose={closeBooking} />
+      </>
+    );
   }
 
   if (currentView === 'dashboard') {

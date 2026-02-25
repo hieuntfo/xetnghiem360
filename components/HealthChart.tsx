@@ -30,7 +30,7 @@ const HealthChart: React.FC = () => {
               contentStyle={{ borderRadius: '8px', border: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)' }}
             />
             {/* Visual guide for "Normal Range" */}
-            {/* <ReferenceArea y1={120} y2={200} /> */}
+            <ReferenceArea y1={120} y2={200} fill="#ecfdf5" fillOpacity={0.5} stroke="none" />
             
             <Line 
               type="monotone" 
