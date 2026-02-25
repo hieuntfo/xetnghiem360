@@ -10,9 +10,12 @@ import ResultLookup from './components/ResultLookup';
 import Dashboard from './components/Dashboard';
 import BookingModal from './components/BookingModal';
 import PriceListModal from './components/PriceListModal';
+import MapView from './components/MapView';
+import MarathonView from './components/MarathonView';
+import EventsView from './components/EventsView';
 
 
-type ViewState = 'home' | 'lookup' | 'decoder' | 'dashboard';
+type ViewState = 'home' | 'lookup' | 'decoder' | 'dashboard' | 'map' | 'marathon' | 'events';
 
 const App: React.FC = () => {
   const [currentView, setCurrentView] = useState<ViewState>('home');
@@ -80,6 +83,18 @@ const App: React.FC = () => {
         <BookingModal isOpen={isBookingOpen} onClose={closeBooking} />
       </>
     );
+  }
+
+  if (currentView === 'events') {
+    return <EventsView onBack={() => setCurrentView('home')} />;
+  }
+
+  if (currentView === 'marathon') {
+    return <MarathonView onBack={() => setCurrentView('home')} onBook={openBooking} />;
+  }
+
+  if (currentView === 'map') {
+    return <MapView onBack={() => setCurrentView('home')} />;
   }
 
   if (currentView === 'dashboard') {
@@ -397,7 +412,7 @@ const App: React.FC = () => {
       <EducationalHub />
       
       {/* --- O2O CONNECTION & EVENTS --- */}
-      <O2OConnection onBook={openBooking} onViewPrices={openPriceList} />
+      <O2OConnection onBook={openBooking} onViewPrices={openPriceList} onOpenMap={() => setCurrentView('map')} onOpenMarathon={() => setCurrentView('marathon')} onOpenEvents={() => setCurrentView('events')} />
 
       {/* --- THE DATA LOCKER (Hồ sơ sức khỏe số) --- */}
       <section className="py-24 bg-white border-t border-gray-100 relative overflow-hidden">
